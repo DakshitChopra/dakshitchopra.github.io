@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dakshit Chopra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0a0a0a;
+  --bg2:      #111111;
+  --bg3:      #181818;
+  --border:   #1e1e1e;
+  --border2:  #2a2a2a;
+  --text:     #f0ede6;
+  --text2:    #c8c4ba;
+  --accent:   #00ff88;
+  --accent2:  #00cc6a;
+  --accent-dim: rgba(0,255,136,0.07);
+  --accent-glow: rgba(0,255,136,0.18);
+  --orange:   #f97316;
+  --orange-dim: rgba(249,115,22,0.1);
+  --orange-glow: rgba(249,115,22,0.2);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'JetBrains Mono', monospace; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 14px; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px); pointer-events: none; z-index: 9999; }
+
+.reveal { opacity: 1; transform: none; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(10,10,10,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0.85rem 2rem; }
+.nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-end; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { font-size: 12px; color: var(--text2); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+
+.page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--border); padding: 6rem 0 4rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; width: 100%; }
+
+/* HERO */
+.hero-prompt { font-size: 13px; color: var(--accent); margin-bottom: 1.2rem; letter-spacing: 1px; font-weight: 500; }
+.hero-prompt .dim { color: #555; }
+.hero-name { font-family: 'Syne', sans-serif; font-size: clamp(48px, 8vw, 80px); font-weight: 800; line-height: 1.0; letter-spacing: -2px; margin-bottom: 1.2rem; }
+.hero-name .green { color: var(--accent); }
+.cursor { display: inline-block; width: 8px; height: clamp(36px, 6vw, 58px); background: var(--accent); margin-left: 6px; vertical-align: bottom; animation: blink 1.2s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-tagline { font-size: 14px; color: var(--text2); max-width: 580px; line-height: 2.0; margin-bottom: 2rem; }
+.hero-tagline .hl { color: var(--text); font-weight: 500; }
+.hero-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--accent); border: 1px solid var(--accent-glow); background: var(--accent-dim); padding: 6px 14px; border-radius: 4px; letter-spacing: 0.5px; margin-bottom: 2.5rem; }
+.hero-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-link { font-size: 12px; padding: 8px 16px; border-radius: 4px; text-decoration: none; letter-spacing: 0.5px; transition: all 0.2s; }
+.hero-link.primary { background: var(--accent); color: #0a0a0a; font-weight: 700; }
+.hero-link.primary:hover { background: var(--accent2); }
+.hero-link.secondary { border: 1px solid var(--border2); color: var(--text2); }
+.hero-link.secondary:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.stat-val { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+.stat-val span { color: var(--accent); font-size: 17px; }
+.stat-val.sm { font-size: 20px; letter-spacing: -0.5px; line-height: 1.2; }
+.stat-label { font-size: 11px; color: var(--text2); letter-spacing: 1px; margin-top: 2px; }
+
+/* SECTION HEADER */
+.sec-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+.sec-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sec-num { font-size: 11px; color: #444; letter-spacing: 1px; }
+.sec-label { font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+@media(max-width:640px){ .about-grid { grid-template-columns: 1fr; } }
+.about-bio h3 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.5px; }
+.about-bio p { font-size: 13px; color: var(--text2); line-height: 2.0; margin-bottom: 1rem; }
+.about-bio p .hl { color: var(--text); }
+.about-bio p .or { color: var(--orange); }
+.about-bio p .gr { color: var(--accent); }
+.skills-block { margin-bottom: 1.6rem; }
+.skills-block-label { font-size: 9px; color: var(--orange); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+.skill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-tag { font-size: 11px; padding: 3px 9px; border-radius: 3px; background: var(--bg3); border: 1px solid var(--border2); color: var(--text2); letter-spacing: 0.5px; transition: all 0.2s; }
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+.cert-highlight { border: 1px solid var(--border2); border-left: 3px solid var(--accent); background: var(--bg2); border-radius: 4px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
+.cert-highlight-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.cert-highlight-meta { font-size: 11px; color: var(--text2); margin-top: 3px; letter-spacing: 0.5px; }
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.project-card { background: var(--bg2); padding: 1.5rem; transition: background 0.2s; display: flex; flex-direction: column; gap: 0.8rem; }
+.project-card:hover { background: var(--bg3); }
+.project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.project-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.project-link { color: var(--accent2); text-decoration: none; font-size: 10px; letter-spacing: 1px; border: 1px solid var(--accent-glow); padding: 3px 8px; border-radius: 3px; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+.project-link:hover { background: var(--accent-dim); color: var(--accent); }
+.project-desc { font-size: 12px; color: var(--text2); line-height: 1.8; }
+.project-highlights { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.project-highlights li { font-size: 11px; color: var(--text2); line-height: 1.6; padding-left: 14px; position: relative; }
+.project-highlights li::before { content: '›'; position: absolute; left: 0; color: var(--orange); }
+.project-highlights li .stat-hl { color: var(--accent); font-weight: 500; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 0.5rem; }
+.stack-tag { font-size: 10px; padding: 2px 7px; border-radius: 3px; background: var(--bg); border: 1px solid var(--border2); color: #888; letter-spacing: 0.5px; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: #333; }
+.entry { position: relative; margin-bottom: 1.8rem; }
+.entry::before { content: ''; position: absolute; left: -21px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: #0a0a0a; border: 1.5px solid #888; transition: all 0.2s; }
+.entry:hover::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+
+.entry-date { font-size: 11px; color: var(--orange); margin-bottom: 4px; letter-spacing: 1px; font-weight: 500; }
+.entry-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.entry-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.entry-sub { font-size: 12px; color: var(--text2); margin-top: 4px; line-height: 1.7; }
+.pill { font-size: 9px; font-weight: 500; padding: 2px 7px; border-radius: 3px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.p-start { background: rgba(0,255,136,0.08); color: var(--accent); border: 1px solid rgba(0,255,136,0.2); }
+.p-end   { background: rgba(255,255,255,0.03); color: #666; border: 1px solid var(--border2); }
+.p-mile  { background: rgba(120,120,255,0.1); color: #aaaaff; border: 1px solid rgba(120,120,255,0.2); }
+.p-ach   { background: rgba(255,200,0,0.1); color: #ffcc00; border: 1px solid rgba(255,200,0,0.2); }
+.p-cert  { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-glow); }
+.p-ctf   { background: rgba(255,60,60,0.1); color: #ff6666; border: 1px solid rgba(255,60,60,0.2); }
+.p-now   { background: rgba(0,255,136,0.1); color: var(--accent); border: 1px solid rgba(0,255,136,0.3); }
+.p-hack  { background: rgba(0,180,255,0.1); color: #00b4ff; border: 1px solid rgba(0,180,255,0.2); }
+.p-learn { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-glow); }
+.air-rank { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; padding: 4px 12px; border: 1px solid rgba(255,200,0,0.2); background: rgba(255,200,0,0.06); border-radius: 3px; font-size: 11px; color: var(--text2); }
+.air-number { font-size: 14px; font-weight: 700; color: #ffcc00; }
+.entry-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; color: var(--accent2); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.entry-link:hover { color: var(--accent); }
+
+.divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
+.sub-label { font-size: 10px; color: var(--orange); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 1rem; }
+.cred-link { display: inline-block; margin-top: 6px; font-size: 10px; color: var(--accent2); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.cred-link:hover { color: var(--accent); }
+
+.hack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 2rem; }
+.hack-card { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 12px 14px; transition: border-color 0.2s; }
+.hack-card:hover { border-color: #00b4ff44; }
+.hack-label { font-size: 9px; color: #00b4ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.hack-name { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.hack-date { font-size: 10px; color: var(--text2); margin-top: 4px; }
+
+.cred-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+.cred-card { background: var(--bg2); padding: 12px 14px; transition: background 0.2s; }
+.cred-card:hover { background: var(--bg3); }
+.cred-issuer { font-size: 9px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.cred-name { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.cred-date { font-size: 10px; color: var(--text2); margin-top: 4px; }
+
+footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-left { font-size: 11px; color: #555; letter-spacing: 0.5px; }
+.footer-left span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 11px; color: #666; text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
+@media(max-width:640px){ .contact-grid { grid-template-columns: 1fr; } }
+.contact-desc { font-size: 13px; color: var(--text2); line-height: 1.9; margin-bottom: 1.5rem; }
+.contact-links { display: flex; flex-direction: column; gap: 10px; }
+.contact-link { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.contact-link:hover { border-color: var(--accent); background: var(--bg3); }
+.contact-link-label { font-size: 10px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; }
+.contact-link-val { font-size: 12px; color: var(--text2); }
+.contact-form { display: flex; flex-direction: column; gap: 10px; }
+.contact-form input, .contact-form textarea { background: var(--bg2); border: 1px solid var(--border2); border-radius: 4px; padding: 12px 14px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; outline: none; resize: vertical; transition: border-color 0.2s; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #444; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+.contact-form button { background: var(--accent); color: #0a0a0a; border: none; border-radius: 4px; padding: 12px 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; transition: background 0.2s; text-align: left; }
+.contact-form button:hover { background: var(--accent2); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="page" id="home">
+<div class="container">
+  <div class="hero-prompt reveal"><span class="dim">$ </span>whoami</div>
+  <h1 class="hero-name reveal">Dakshit<br><span class="green">Chopra</span><span class="cursor"></span></h1>
+  <p class="hero-tagline reveal">
+    Engineer with a broad foundation across <span class="hl">networking, security, software development, and AI</span>.
+    Currently in enterprise network and security operations at <span class="hl">TCS</span> —
+    managing infrastructure, handling incidents, working with <span class="hl">BeyondTrust, BigPanda, and Wireshark</span>.
+    <span class="hl">CompTIA Security+</span> certified · Passionate about building secure, intelligent systems.
+  </p>
+  <div class="hero-status reveal">open to new opportunities</div>
+  <div class="hero-links reveal">
+    <a class="hero-link secondary" href="https://www.linkedin.com/in/dakshitchopra/" target="_blank">LinkedIn</a>
+    <a class="hero-link secondary" href="https://github.com/DakshitChopra" target="_blank">GitHub</a>
+    <a class="hero-link secondary" href="https://leetcode.com/u/dakshitchopra/" target="_blank">LeetCode</a>
+    <a class="hero-link secondary" href="https://superuser.com/users/1263647/dakshit-chopra" target="_blank">Superuser</a>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat">
+      <div class="stat-val">9.13<span>/10</span></div>
+      <div class="stat-label">B.Tech CSE CGPA · SRM</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">TCS</div>
+      <div class="stat-label">Current Employer</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val sm">Fractal<br>Analytics</div>
+      <div class="stat-label">Past Employer</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">Sec<span>+</span></div>
+      <div class="stat-label">CompTIA Certified</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="page" id="about">
+<div class="container">
+  <div class="sec-header reveal"><span class="sec-num">01</span><span class="sec-label">About</span></div>
+  <div class="about-grid">
+
+    <div class="about-bio reveal">
+      <h3>Hi, I'm Dakshit.</h3>
+      <p>I built my first app in <span class="hl">6th grade</span> — long before I knew what engineering was. By 11th grade I was writing <span class="or">Java code in school</span> through Informatics Practices, and in 12th grade I built a shopping app called Shopadict as my project. That curiosity never stopped.</p>
+      <p>I'm now a <span class="hl">Network Engineer at TCS</span> with a growing obsession for cybersecurity. I hold a <span class="gr">CompTIA Security+ SY0-701</span> certification and I love solving CTF challenges across different domains.</p>
+      <p>My background spans <span class="or">networking, machine learning, mobile development, and security</span> — which gives me an unusual ability to connect dots across disciplines.</p>
+      <div class="cert-highlight">
+        <div class="cert-highlight-name">★ &nbsp;CompTIA Security+ SY0-701</div>
+        <div class="cert-highlight-meta">CERTIFIED DEC 2025 · VALID 3 YEARS</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="skills-block">
+        <div class="skills-block-label">Networking</div>
+        <div class="skill-row">
+          <span class="skill-tag">Routing & Switching</span>
+          <span class="skill-tag">TCP/IP</span>
+          <span class="skill-tag">Network Security</span>
+          <span class="skill-tag">Cisco</span>
+          <span class="skill-tag">Juniper</span>
+          <span class="skill-tag">Arista</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">BeyondTrust</span>
+          <span class="skill-tag">BigPanda</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <div class="skills-block-label">Security</div>
+        <div class="skill-row">
+          <span class="skill-tag">BurpSuite</span>
+          <span class="skill-tag">CTF Challenges</span>
+          <span class="skill-tag">OWASP</span>
+          <span class="skill-tag">Vulnerability Assessment</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <div class="skills-block-label">Development</div>
+        <div class="skill-row">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Flask</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <div class="skills-block-label">ML & Data</div>
+        <div class="skill-row">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PowerBI</span>
+        </div>
+      </div>
+      <div class="skills-block">
+        <div class="skills-block-label">Cloud & Tools</div>
+        <div class="skill-row">
+          <span class="skill-tag">Google Cloud</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">VS Code</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ PROJECTS ══ -->
+<div class="page" id="projects">
+<div class="container">
+  <div class="sec-header reveal"><span class="sec-num">02</span><span class="sec-label">Projects</span></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-name">Fake News Detection</div>
+      </div>
+      <div class="project-desc">Text classification model for identifying fake news using deep learning NLP architecture.</div>
+      <ul class="project-highlights">
+        <li>Built on <span class="stat-hl">FastAPI's AWD_LSTM</span> architecture for sequence classification</li>
+        <li>Improved accuracy from <span class="stat-hl">94.77% → 97.19%</span> through data preprocessing and multi-epoch training</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">AWD_LSTM</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">NLP</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-name">HWS — Health Scorer</div>
+        <a class="project-link" href="https://github.com/DakshitChopra/Runtime-Error" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="project-desc">Generates a comprehensive Health Score based on user health inputs for transparent insurance pricing.</div>
+      <ul class="project-highlights">
+        <li>Runs <span class="stat-hl">5 deep learning models</span> in parallel using TensorFlow</li>
+        <li>Full-stack: <span class="stat-hl">Flask backend</span> + MongoDB + survey UI</li>
+        <li>Health score delivered in <span class="stat-hl">3–5 minutes</span></li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">TensorFlow</span>
+        <span class="stack-tag">Flask</span>
+        <span class="stack-tag">MongoDB</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-name">Samachaar — News App</div>
+        <a class="project-link" href="https://github.com/DakshitChopra/newsapp" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="project-desc">Dynamic news app with real-time fetching across multiple categories.</div>
+      <ul class="project-highlights">
+        <li>Built with <span class="stat-hl">Flutter</span> using NewsAPI integration</li>
+        <li>Smooth real-time fetching with <span class="stat-hl">GetX</span> state management</li>
+        <li>Multiple news categories with clean UI</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Flutter</span>
+        <span class="stack-tag">Dart</span>
+        <span class="stack-tag">NewsAPI</span>
+        <span class="stack-tag">GetX</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-name">PlanT — Smart Agriculture</div>
+        <a class="project-link" href="https://github.com/DakshitChopra/plan-t" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="project-desc">Smart agriculture solution providing crop recommendations and plant disease identification. Final semester major project.</div>
+      <ul class="project-highlights">
+        <li><span class="stat-hl">Crop Recommendation</span> using Random Forest algorithm</li>
+        <li><span class="stat-hl">Plant Disease Identification</span> using CNN</li>
+        <li>Multilingual interface for data input and recommendations</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Random Forest</span>
+        <span class="stack-tag">CNN</span>
+        <span class="stack-tag">Multilingual UI</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-name">Shopadict — Shopping App</div>
+        <a class="project-link" href="https://github.com/DakshitChopra/Java-ShopAddict" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="project-desc">Shopping application built in 12th grade as a self-chosen project for Informatics Practices.</div>
+      <ul class="project-highlights">
+        <li>Built entirely in <span class="stat-hl">Java</span> as part of school curriculum</li>
+        <li>Functional shopping interface with core e-commerce logic</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Java</span>
+        <span class="stack-tag">MySQL</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ TIMELINE ══ -->
+<div class="page" id="timeline" style="min-height:auto; padding-bottom:4rem;">
+<div class="container">
+  <div class="sec-header reveal"><span class="sec-num">03</span><span class="sec-label">Timeline</span></div>
+  <div class="timeline">
+
+    <div class="entry reveal"><div class="entry-date">~ 2019 – 2020</div><div class="entry-head"><span class="entry-title">Shopadict — First Java project</span><span class="pill p-mile">origin</span></div><div class="entry-sub">Built a fully functional shopping app in Java during 12th grade as a self-chosen project for Informatics Practices.</div><a class="entry-link" href="https://github.com/DakshitChopra/Java-ShopAddict" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
+
+    <div class="entry reveal"><div class="entry-date">JUN 2020</div><div class="entry-head"><span class="entry-title">Started YouTube — Codephile</span><span class="pill p-start">start</span></div><div class="entry-sub">Technical CS content. Grew to 5,800+ subscribers.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT 2020</div><div class="entry-head"><span class="entry-title">Started B.Tech CSE — SRM Institute</span><span class="pill p-start">start</span></div><div class="entry-sub">SRM Institute of Science and Technology, Chennai</div></div>
+
+    <div class="entry reveal"><div class="entry-date">6 NOV 2020</div><div class="entry-head"><span class="entry-title">1st place — E-Quiz, CSE B.Tech 1st Year</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">University-level quiz competition · SRM IST</div><a class="entry-link" href="https://drive.google.com/file/d/1MIHn_aWdGpK4aqO_qJo8VCc3uUUcFdXT" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
+
+    <div class="entry reveal"><div class="entry-date">JUL 2021</div><div class="entry-head"><span class="entry-title">Early self-study push — C++, PHP, IBM Cybersecurity</span><span class="pill p-learn">learning</span></div><div class="entry-sub">IBM's 3-part Cybersecurity series + C++ and PHP on Udemy — early security interest years before it became a career focus.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT 2021</div><div class="entry-head"><span class="entry-title">Hack Summit 2.0 — Aaruush '21</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">48-hour national-level hackathon · 8–10 Oct 2021</div></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT – NOV 2021</div><div class="entry-head"><span class="entry-title">Google Cloud learning sprint — Qwiklabs</span><span class="pill p-learn">learning</span></div><div class="entry-sub">Cloud Engineering, Data Science & ML on Google Cloud · DevOps and Diwali Qwiklabs badges earned.</div><a class="entry-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> qwiklabs profile</a></div>
+
+    <div class="entry reveal"><div class="entry-date">20 JAN 2022</div><div class="entry-head"><span class="entry-title">OOP Level 1 — SRM Online Programming Lab</span><span class="pill p-cert">certificate</span></div></div>
+
+    <div class="entry reveal"><div class="entry-date">FEB 2022</div><div class="entry-head"><span class="entry-title">Algorithmic Toolbox — UC San Diego</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · University of California San Diego</div></div>
+
+    <div class="entry reveal"><div class="entry-date">MAR 2022</div><div class="entry-head"><span class="entry-title">Subject Matter Expert — Chegg India</span><span class="pill p-start">start</span></div><div class="entry-sub">Mentoring students across DSA, algorithms, and core CS subjects.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">AUG 2022</div><div class="entry-head"><span class="entry-title">Google Kick Start 2022 — Round E</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">Global competitive programming contest by Google · Rank 6399</div><a class="entry-link" href="https://drive.google.com/file/d/1SlmIQEAyfS9WhywN_q8xkw9c33dinCxT/view?usp=drive_link" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT 2022</div><div class="entry-head"><span class="entry-title">Foundations of Project Management — Google</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Google</div></div>
+
+    <div class="entry reveal"><div class="entry-date">NOV 2022</div><div class="entry-head"><span class="entry-title">HackCBS 5.0</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">India's largest student-run hackathon · 4–6 Nov 2022</div></div>
+
+    <div class="entry reveal"><div class="entry-date">FEB 2023</div><div class="entry-head"><span class="entry-title">Mathematics for ML — Imperial College London</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Imperial College London</div></div>
+
+    <div class="entry reveal"><div class="entry-date">MAR 2023</div><div class="entry-head"><span class="entry-title">Yuva's Knack Hackathon — CWD SRM UP</span><span class="pill p-hack">hackathon</span></div></div>
+
+    <div class="entry reveal"><div class="entry-date">APR 2023</div><div class="entry-head"><span class="entry-title">Introduction to Programming in C — NPTEL</span><span class="pill p-ach">elite rank</span></div><div class="entry-sub">Score: 84% · Elite Rank · IIT NPTEL</div></div>
+
+    <div class="entry reveal"><div class="entry-date">12 JUN 2023</div><div class="entry-head"><span class="entry-title">Project Intern — Fractal Analytics</span><span class="pill p-start">start</span></div><div class="entry-sub">Gurugram, Haryana (Hybrid)</div></div>
+
+    <div class="entry end reveal"><div class="entry-date">7 AUG 2023</div><div class="entry-head"><span class="entry-title">Completed Internship — Fractal Analytics</span><span class="pill p-end">end</span></div><a class="entry-link" href="#" onclick="return false;"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> completion certificate</a></div>
+
+    <div class="entry reveal"><div class="entry-date">FEB 2024</div><div class="entry-head"><span class="entry-title">Fractal Analytics learning series</span><span class="pill p-cert">certificates</span></div><div class="entry-sub">Structured Approach to Problem Solving · Data Storytelling · Human Decision Making and its Biases</div></div>
+
+    <div class="entry reveal"><div class="entry-date">14 JAN 2024</div><div class="entry-head"><span class="entry-title">PW Skills Coding Conquest 2024</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">National-level competitive coding contest · <span style="color:#ffcc00;font-weight:700;">AIR #94</span></div><a class="entry-link" href="https://drive.google.com/file/d/14yBF-Mg9GsoDyQQOge1TaKo10tbE-VwR" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
+
+    <div class="entry reveal"><div class="entry-date">APR 2024</div><div class="entry-head"><span class="entry-title">PlanT — Smart Agriculture Solution</span><span class="pill p-mile">major project</span></div><div class="entry-sub">Final semester major project · Crop Recommendation using Random Forest · Plant Disease Identification using CNN · Multilingual interface.</div><a class="entry-link" href="https://github.com/DakshitChopra/plan-t" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
+
+    <div class="entry end reveal"><div class="entry-date">JUN 2024</div><div class="entry-head"><span class="entry-title">Graduated — B.Tech CSE</span><span class="pill p-mile">milestone</span></div><div class="entry-sub">SRM Institute of Science and Technology · CGPA: 9.13 / 10</div></div>
+
+    <div class="entry reveal"><div class="entry-date">1 JUL 2024</div><div class="entry-head"><span class="entry-title">Technology Intern — Dashamlav AI Labs</span><span class="pill p-start">start</span></div><div class="entry-sub">Remote · AI/ML focused role.</div></div>
+
+    <div class="entry end reveal"><div class="entry-date">31 JUL 2024</div><div class="entry-head"><span class="entry-title">Ended — Dashamlav AI Labs</span><span class="pill p-end">end</span></div></div>
+
+    <div class="entry end reveal"><div class="entry-date">1 AUG 2024</div><div class="entry-head"><span class="entry-title">Engagement ended — Chegg India</span><span class="pill p-end">end</span></div></div>
+
+    <div class="entry end reveal"><div class="entry-date">JAN 2025</div><div class="entry-head"><span class="entry-title">YouTube channel compromised — Codephile</span><span class="pill p-end">end</span></div><div class="entry-sub">Channel with 5,800+ subscribers lost to hacking.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">26 JUN 2025</div><div class="entry-head"><span class="entry-title">Network Engineer — Tata Consultancy Services</span><span class="pill p-now">current</span></div><div class="entry-sub">Enterprise network and security operations · BeyondTrust · BigPanda · Wireshark</div></div>
+
+    <div class="entry reveal"><div class="entry-date">29 DEC 2025</div><div class="entry-head"><span class="entry-title">CompTIA Security+ SY0-701</span><span class="pill p-cert">certification</span></div><div class="entry-sub">Industry-standard cybersecurity certification.</div></div>
+
+    <div class="entry hot reveal"><div class="entry-date">17 MAR 2026</div><div class="entry-head"><span class="entry-title">Restarted YouTube — @codephile2.0</span><span class="pill p-start">start</span></div><div class="entry-sub">First video uploaded. Back at it.</div><a class="entry-link" href="https://youtube.com/@codephile2.0" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> @codephile2.0</a></div>
+
+    <div class="entry hot reveal"><div class="entry-date">30 MAR 2026</div><div class="entry-head"><span class="entry-title">First Mobile App Security CTF — solved</span><span class="pill p-ctf">CTF</span></div><div class="entry-sub">Reverse engineered Android APK via Jadx · hooked runtime with Frida · exploited Insecure Data Storage (OWASP M2) · captured the flag.</div></div>
+
+  </div>
+
+  <div class="divider reveal"></div>
+
+  <div class="sub-label reveal">hackathons & participation</div>
+  <div class="hack-grid">
+    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">Hack Summit 2.0 — Aaruush '21</div><div class="hack-date">OCT 2021 · 48hr national-level</div><a class="cred-link" href="https://drive.google.com/file/d/1vl9SNA7p8JXfcCAdO0ZEHgzMg4aG5Hoj/" target="_blank">certificate ↗</a></div>
+    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">HackCBS 5.0</div><div class="hack-date">NOV 2022 · India's largest student hackathon</div></div>
+    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">Yuva's Knack — CWD SRM UP</div><div class="hack-date">MAR 2023</div></div>
+    <div class="hack-card reveal"><div class="hack-label">event</div><div class="hack-name">GDG DevFest India 2021</div><div class="hack-date">OCT 2021</div><a class="cred-link" href="https://drive.google.com/file/d/1pNzT8SsSFB3896O3V32klS5qHsjgaBVP/" target="_blank">certificate ↗</a></div>
+    <div class="hack-card reveal"><div class="hack-label">event</div><div class="hack-name">Over-React — IEEE SRMIST SB</div><div class="hack-date">MAR 2021</div><a class="cred-link" href="https://drive.google.com/file/d/1MRsFFmx3iKsg6Co70_9YujaNuLItIbBc/" target="_blank">certificate ↗</a></div>
+  </div>
+
+  <div class="sub-label reveal">courses & credentials</div>
+  <div class="cred-grid">
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Intro to Cybersecurity Tools & Cyber Attacks</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/d8c10b3d-bb6f-4277-8bd4-8d7454416c2f" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Roles, Processes & OS Security</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/4391228a-5cc1-493e-9820-cfc035d15024" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Compliance Framework & Sys Admin</div><div class="cred-date">SEP 2021</div><a class="cred-link" href="https://www.credly.com/badges/74f632ee-ff4c-48b1-a93c-fe661ff0025b" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">The Complete Introduction to C++ Programming</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-7c45f8f9-8873-42d9-8a1f-04a83c1f521c/" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">Learn PHP — For Beginners</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-5dee1b56-5524-4a1c-af6e-88e661dd6260/" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Qwiklabs</div><div class="cred-name">Cloud Engineering, Data Science & ML — Google Cloud</div><div class="cred-date">OCT 2021</div><a class="cred-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank">profile ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">UC San Diego</div><div class="cred-name">Algorithmic Toolbox</div><div class="cred-date">FEB 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/KTTDCKYAVTCV" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Google</div><div class="cred-name">Foundations of Project Management</div><div class="cred-date">OCT 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/BUPKMBJD5CCR" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">SRM Institute</div><div class="cred-name">OOP Level 1 — Online Programming Lab</div><div class="cred-date">JAN 2022</div><a class="cred-link" href="https://drive.google.com/file/d/1zD8sWJq3ainxrov9iBiZ2nswHZBN3CJN" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Imperial College London</div><div class="cred-name">Mathematics for Machine Learning Specialization</div><div class="cred-date">FEB 2023</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/specialization/RL5BNZ348ZF7" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">NPTEL · IIT</div><div class="cred-name">Introduction to Programming in C — Elite Rank · 84%</div><div class="cred-date">APR 2023</div><a class="cred-link" href="https://archive.nptel.ac.in/content/noc/NOC23/SEM1/Ecertificates/106/noc23-cs02/Course/NPTEL23CS02S3453007803038961.jpg" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Structured Approach to Problem Solving</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/PCH2KUFTUDNZ" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Data Storytelling</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/EK9YM7XW9YUG" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Human Decision Making and its Biases</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/35CFE8UBWVNF" target="_blank">certificate ↗</a></div>
+  </div>
+
+  <div class="divider reveal"></div>
+
+  <div class="divider reveal"></div>
+  <div class="sec-header reveal"><span class="sec-num">—</span><span class="sec-label">Certification</span></div>
+  <div style="border:1px solid var(--border2); border-left:3px solid var(--accent); background:var(--bg2); border-radius:4px; padding:1.2rem 1.5rem; display:flex; align-items:center; gap:1.2rem; margin-bottom:2rem;" class="reveal">
+    <div style="font-size:22px; flex-shrink:0; width:44px; text-align:center;">★</div>
+    <div style="flex:1;">
+      <div style="font-size:14px; font-weight:500; color:var(--text);">CompTIA Security+ SY0-701</div>
+      <div style="font-size:11px; color:var(--text2); margin-top:3px; letter-spacing:0.5px;">CERTIFIED DEC 2025 · VALID 3 YEARS · COMPTIA</div>
+    </div>
+    <a class="entry-link" href="https://www.credly.com/badges/5ad92b13-cae7-4221-ac87-0a0806844e1e/" target="_blank" style="margin-top:0;flex-shrink:0;">
+      <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      verify on credly
+    </a>
+  </div>
+
+  <div id="contact" class="sec-header reveal"><span class="sec-num">04</span><span class="sec-label">Contact</span></div>
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <p class="contact-desc">Have an opportunity, a question, or just want to talk security? Send a message directly.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/dakshitchopra/" target="_blank" class="contact-link"><span class="contact-link-label">LinkedIn</span><span class="contact-link-val">dakshitchopra</span></a>
+        <a href="https://github.com/DakshitChopra" target="_blank" class="contact-link"><span class="contact-link-label">GitHub</span><span class="contact-link-val">DakshitChopra</span></a>
+        <a href="https://leetcode.com/u/dakshitchopra/" target="_blank" class="contact-link"><span class="contact-link-label">LeetCode</span><span class="contact-link-val">dakshitchopra</span></a>
+        <a href="https://superuser.com/users/1263647/dakshit-chopra" target="_blank" class="contact-link"><span class="contact-link-label">Superuser</span><span class="contact-link-val">dakshit-chopra</span></a>
+        <div class="contact-link"><span class="contact-link-label">Email</span><span class="contact-link-val">dakshitchopra@gmail.com</span></div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="sendMail(event)">
+      <input type="text" id="cf-subject" placeholder="Subject" required />
+      <textarea id="cf-body" placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send Message ↗</button>
+      <div id="cf-note" style="display:none; font-size:11px; color:var(--accent); margin-top:8px; letter-spacing:0.5px;">Opening your mail client...</div>
+    </form>
+  </div>
+
+  <footer class="reveal">
+    <div class="footer-left"><span>dakshit chopra</span> · built with intent</div>
+    
+  </footer>
+
+</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Fallback: force all visible after 1s in case observer fails
+setTimeout(() 
