@@ -160,6 +160,15 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
 ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+
+/* ACHIEVEMENTS */
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.ach-card { background: var(--bg2); padding: 1.2rem 1.4rem; transition: background 0.2s; display: flex; flex-direction: column; gap: 4px; }
+.ach-card:hover { background: var(--bg3); }
+.ach-year { font-size: 10px; color: var(--orange); letter-spacing: 1px; font-weight: 500; }
+.ach-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; margin-top: 2px; }
+.ach-sub { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
 /* CONTACT */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
 @media(max-width:640px){ .contact-grid { grid-template-columns: 1fr; } }
@@ -184,6 +193,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
       <a href="#timeline">Timeline</a>
       <a href="#contact">Contact</a>
     </div>
@@ -410,70 +420,130 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
 </div>
 
 <!-- ══ TIMELINE ══ -->
+
+<!-- ══ ACHIEVEMENTS ══ -->
+<div class="page" id="achievements" style="min-height:auto; padding: 5rem 0 4rem;">
+<div class="container">
+  <div class="sec-header reveal"><span class="sec-num">03</span><span class="sec-label">Achievements</span></div>
+  <div class="ach-grid">
+
+    <div class="ach-card reveal">
+      <div class="ach-year">DEC 2019</div>
+      <div class="ach-title">Gold Medal of Excellence — Science Olympiad Foundation</div>
+      <div class="ach-sub">1st Rank in institute · SOF</div>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">6 NOV 2020</div>
+      <div class="ach-title">1st Place — E-Quiz, CSE B.Tech 1st Year</div>
+      <div class="ach-sub">University-level quiz competition · SRM IST</div>
+      <a class="cred-link" href="https://drive.google.com/file/d/1MIHn_aWdGpK4aqO_qJo8VCc3uUUcFdXT" target="_blank">certificate ↗</a>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">20 JUL 2022</div>
+      <div class="ach-title">Innovate India Coding Championship — AICTE</div>
+      <div class="ach-sub">Rank 1977 out of 200,000+ participants</div>
+      <a class="cred-link" href="https://drive.google.com/drive/folders/1RTduujkPwHmYHSu6KO5tYT0UmpmwI7zw" target="_blank">certificates ↗</a>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">AUG 2022</div>
+      <div class="ach-title">Google Kick Start 2022 — Round E</div>
+      <div class="ach-sub">Global competitive programming contest · Rank 6399</div>
+      <a class="cred-link" href="https://drive.google.com/file/d/1SlmIQEAyfS9WhywN_q8xkw9c33dinCxT/view?usp=drive_link" target="_blank">certificate ↗</a>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">9 OCT 2022</div>
+      <div class="ach-title">Hacktoberfest 2022</div>
+      <div class="ach-sub">Open source contribution badge</div>
+      <a class="cred-link" href="https://www.holopin.io/userbadge/cl90ytvat2253309matmiz0imz" target="_blank">badge ↗</a>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">14 JAN 2024</div>
+      <div class="ach-title">PW Skills Coding Conquest 2024</div>
+      <div class="ach-sub">National-level competitive coding · <span style="color:#ffcc00;font-weight:700;">AIR #94</span></div>
+      <a class="cred-link" href="https://drive.google.com/file/d/14yBF-Mg9GsoDyQQOge1TaKo10tbE-VwR" target="_blank">certificate ↗</a>
+    </div>
+
+    <div class="ach-card reveal">
+      <div class="ach-year">30 MAR 2026</div>
+      <div class="ach-title">First Mobile App Security CTF — solved</div>
+      <div class="ach-sub">Reverse engineered APK · Frida hook · OWASP M2 exploit</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
 <div class="page" id="timeline" style="min-height:auto; padding-bottom:4rem;">
 <div class="container">
-  <div class="sec-header reveal"><span class="sec-num">03</span><span class="sec-label">Timeline</span></div>
+  <div class="sec-header reveal"><span class="sec-num">04</span><span class="sec-label">Timeline</span></div>
   <div class="timeline">
+    <div class="entry hot reveal"><div class="entry-date">30 MAR 2026</div><div class="entry-head"><span class="entry-title">First Mobile App Security CTF — solved</span><span class="pill p-ctf">CTF</span></div><div class="entry-sub">Reverse engineered Android APK via Jadx · hooked runtime with Frida · exploited Insecure Data Storage (OWASP M2) · captured the flag.</div></div>
 
-    <div class="entry reveal"><div class="entry-date">~ 2019 – 2020</div><div class="entry-head"><span class="entry-title">Shopadict — First Java project</span><span class="pill p-mile">origin</span></div><div class="entry-sub">Built a fully functional shopping app in Java during 12th grade as a self-chosen project for Informatics Practices.</div><a class="entry-link" href="https://github.com/DakshitChopra/Java-ShopAddict" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
+    <div class="entry hot reveal"><div class="entry-date">17 MAR 2026</div><div class="entry-head"><span class="entry-title">Restarted YouTube — @codephile2.0</span><span class="pill p-start">start</span></div><div class="entry-sub">First video uploaded. Back at it.</div><a class="entry-link" href="https://youtube.com/@codephile2.0" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> @codephile2.0</a></div>
 
-    <div class="entry reveal"><div class="entry-date">JUN 2020</div><div class="entry-head"><span class="entry-title">Started YouTube — Codephile</span><span class="pill p-start">start</span></div><div class="entry-sub">Technical CS content. Grew to 5,800+ subscribers.</div></div>
+    <div class="entry reveal"><div class="entry-date">29 DEC 2025</div><div class="entry-head"><span class="entry-title">CompTIA Security+ SY0-701</span><span class="pill p-cert">certification</span></div><div class="entry-sub">Industry-standard cybersecurity certification.</div></div>
 
-    <div class="entry reveal"><div class="entry-date">OCT 2020</div><div class="entry-head"><span class="entry-title">Started B.Tech CSE — SRM Institute</span><span class="pill p-start">start</span></div><div class="entry-sub">SRM Institute of Science and Technology, Chennai</div></div>
+    <div class="entry reveal"><div class="entry-date">26 JUN 2025</div><div class="entry-head"><span class="entry-title">Network Engineer — Tata Consultancy Services</span><span class="pill p-now">current</span></div><div class="entry-sub">Enterprise network and security operations · BeyondTrust · BigPanda · Wireshark</div></div>
 
-    <div class="entry reveal"><div class="entry-date">6 NOV 2020</div><div class="entry-head"><span class="entry-title">1st place — E-Quiz, CSE B.Tech 1st Year</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">University-level quiz competition · SRM IST</div><a class="entry-link" href="https://drive.google.com/file/d/1MIHn_aWdGpK4aqO_qJo8VCc3uUUcFdXT" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
+    <div class="entry end reveal"><div class="entry-date">JAN 2025</div><div class="entry-head"><span class="entry-title">YouTube channel compromised — Codephile</span><span class="pill p-end">end</span></div><div class="entry-sub">Channel with 5,800+ subscribers lost to hacking.</div></div>
 
-    <div class="entry reveal"><div class="entry-date">JUL 2021</div><div class="entry-head"><span class="entry-title">Early self-study push — C++, PHP, IBM Cybersecurity</span><span class="pill p-learn">learning</span></div><div class="entry-sub">IBM's 3-part Cybersecurity series + C++ and PHP on Udemy — early security interest years before it became a career focus.</div></div>
+    <div class="entry end reveal"><div class="entry-date">1 AUG 2024</div><div class="entry-head"><span class="entry-title">Engagement ended — Chegg India</span><span class="pill p-end">end</span></div></div>
 
-    <div class="entry reveal"><div class="entry-date">OCT 2021</div><div class="entry-head"><span class="entry-title">Hack Summit 2.0 — Aaruush '21</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">48-hour national-level hackathon · 8–10 Oct 2021</div></div>
+    <div class="entry end reveal"><div class="entry-date">31 JUL 2024</div><div class="entry-head"><span class="entry-title">Ended — Dashamlav AI Labs</span><span class="pill p-end">end</span></div></div>
 
-    <div class="entry reveal"><div class="entry-date">OCT – NOV 2021</div><div class="entry-head"><span class="entry-title">Google Cloud learning sprint — Qwiklabs</span><span class="pill p-learn">learning</span></div><div class="entry-sub">Cloud Engineering, Data Science & ML on Google Cloud · DevOps and Diwali Qwiklabs badges earned.</div><a class="entry-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> qwiklabs profile</a></div>
+    <div class="entry reveal"><div class="entry-date">1 JUL 2024</div><div class="entry-head"><span class="entry-title">Technology Intern — Dashamlav AI Labs</span><span class="pill p-start">start</span></div><div class="entry-sub">Remote · AI/ML focused role.</div></div>
 
-    <div class="entry reveal"><div class="entry-date">20 JAN 2022</div><div class="entry-head"><span class="entry-title">OOP Level 1 — SRM Online Programming Lab</span><span class="pill p-cert">certificate</span></div></div>
+    <div class="entry end reveal"><div class="entry-date">JUN 2024</div><div class="entry-head"><span class="entry-title">Graduated — B.Tech CSE</span><span class="pill p-mile">milestone</span></div><div class="entry-sub">SRM Institute of Science and Technology · CGPA: 9.13 / 10</div></div>
 
-    <div class="entry reveal"><div class="entry-date">FEB 2022</div><div class="entry-head"><span class="entry-title">Algorithmic Toolbox — UC San Diego</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · University of California San Diego</div></div>
-
-    <div class="entry reveal"><div class="entry-date">MAR 2022</div><div class="entry-head"><span class="entry-title">Subject Matter Expert — Chegg India</span><span class="pill p-start">start</span></div><div class="entry-sub">Mentoring students across DSA, algorithms, and core CS subjects.</div></div>
-
-    <div class="entry reveal"><div class="entry-date">AUG 2022</div><div class="entry-head"><span class="entry-title">Google Kick Start 2022 — Round E</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">Global competitive programming contest by Google · Rank 6399</div><a class="entry-link" href="https://drive.google.com/file/d/1SlmIQEAyfS9WhywN_q8xkw9c33dinCxT/view?usp=drive_link" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
-
-    <div class="entry reveal"><div class="entry-date">OCT 2022</div><div class="entry-head"><span class="entry-title">Foundations of Project Management — Google</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Google</div></div>
-
-    <div class="entry reveal"><div class="entry-date">NOV 2022</div><div class="entry-head"><span class="entry-title">HackCBS 5.0</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">India's largest student-run hackathon · 4–6 Nov 2022</div></div>
-
-    <div class="entry reveal"><div class="entry-date">FEB 2023</div><div class="entry-head"><span class="entry-title">Mathematics for ML — Imperial College London</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Imperial College London</div></div>
-
-    <div class="entry reveal"><div class="entry-date">MAR 2023</div><div class="entry-head"><span class="entry-title">Yuva's Knack Hackathon — CWD SRM UP</span><span class="pill p-hack">hackathon</span></div></div>
-
-    <div class="entry reveal"><div class="entry-date">APR 2023</div><div class="entry-head"><span class="entry-title">Introduction to Programming in C — NPTEL</span><span class="pill p-ach">elite rank</span></div><div class="entry-sub">Score: 84% · Elite Rank · IIT NPTEL</div></div>
-
-    <div class="entry reveal"><div class="entry-date">12 JUN 2023</div><div class="entry-head"><span class="entry-title">Project Intern — Fractal Analytics</span><span class="pill p-start">start</span></div><div class="entry-sub">Gurugram, Haryana (Hybrid)</div></div>
-
-    <div class="entry end reveal"><div class="entry-date">7 AUG 2023</div><div class="entry-head"><span class="entry-title">Completed Internship — Fractal Analytics</span><span class="pill p-end">end</span></div><a class="entry-link" href="#" onclick="return false;"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> completion certificate</a></div>
+    <div class="entry reveal"><div class="entry-date">APR 2024</div><div class="entry-head"><span class="entry-title">PlanT — Smart Agriculture Solution</span><span class="pill p-mile">major project</span></div><div class="entry-sub">Final semester major project · Crop Recommendation using Random Forest · Plant Disease Identification using CNN · Multilingual interface.</div><a class="entry-link" href="https://github.com/DakshitChopra/plan-t" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
 
     <div class="entry reveal"><div class="entry-date">FEB 2024</div><div class="entry-head"><span class="entry-title">Fractal Analytics learning series</span><span class="pill p-cert">certificates</span></div><div class="entry-sub">Structured Approach to Problem Solving · Data Storytelling · Human Decision Making and its Biases</div></div>
 
     <div class="entry reveal"><div class="entry-date">14 JAN 2024</div><div class="entry-head"><span class="entry-title">PW Skills Coding Conquest 2024</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">National-level competitive coding contest · <span style="color:#ffcc00;font-weight:700;">AIR #94</span></div><a class="entry-link" href="https://drive.google.com/file/d/14yBF-Mg9GsoDyQQOge1TaKo10tbE-VwR" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
 
-    <div class="entry reveal"><div class="entry-date">APR 2024</div><div class="entry-head"><span class="entry-title">PlanT — Smart Agriculture Solution</span><span class="pill p-mile">major project</span></div><div class="entry-sub">Final semester major project · Crop Recommendation using Random Forest · Plant Disease Identification using CNN · Multilingual interface.</div><a class="entry-link" href="https://github.com/DakshitChopra/plan-t" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
+    <div class="entry end reveal"><div class="entry-date">7 AUG 2023</div><div class="entry-head"><span class="entry-title">Completed Internship — Fractal Analytics</span><span class="pill p-end">end</span></div><a class="entry-link" href="#" onclick="return false;"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> completion certificate</a></div>
 
-    <div class="entry end reveal"><div class="entry-date">JUN 2024</div><div class="entry-head"><span class="entry-title">Graduated — B.Tech CSE</span><span class="pill p-mile">milestone</span></div><div class="entry-sub">SRM Institute of Science and Technology · CGPA: 9.13 / 10</div></div>
+    <div class="entry reveal"><div class="entry-date">12 JUN 2023</div><div class="entry-head"><span class="entry-title">Project Intern — Fractal Analytics</span><span class="pill p-start">start</span></div><div class="entry-sub">Gurugram, Haryana (Hybrid)</div></div>
 
-    <div class="entry reveal"><div class="entry-date">1 JUL 2024</div><div class="entry-head"><span class="entry-title">Technology Intern — Dashamlav AI Labs</span><span class="pill p-start">start</span></div><div class="entry-sub">Remote · AI/ML focused role.</div></div>
+    <div class="entry reveal"><div class="entry-date">APR 2023</div><div class="entry-head"><span class="entry-title">Introduction to Programming in C — NPTEL</span><span class="pill p-ach">elite rank</span></div><div class="entry-sub">Score: 84% · Elite Rank · IIT NPTEL</div></div>
 
-    <div class="entry end reveal"><div class="entry-date">31 JUL 2024</div><div class="entry-head"><span class="entry-title">Ended — Dashamlav AI Labs</span><span class="pill p-end">end</span></div></div>
+    <div class="entry reveal"><div class="entry-date">MAR 2023</div><div class="entry-head"><span class="entry-title">Yuva's Knack Hackathon — CWD SRM UP</span><span class="pill p-hack">hackathon</span></div></div>
 
-    <div class="entry end reveal"><div class="entry-date">1 AUG 2024</div><div class="entry-head"><span class="entry-title">Engagement ended — Chegg India</span><span class="pill p-end">end</span></div></div>
+    <div class="entry reveal"><div class="entry-date">FEB 2023</div><div class="entry-head"><span class="entry-title">Mathematics for ML — Imperial College London</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Imperial College London</div></div>
 
-    <div class="entry end reveal"><div class="entry-date">JAN 2025</div><div class="entry-head"><span class="entry-title">YouTube channel compromised — Codephile</span><span class="pill p-end">end</span></div><div class="entry-sub">Channel with 5,800+ subscribers lost to hacking.</div></div>
+    <div class="entry reveal"><div class="entry-date">NOV 2022</div><div class="entry-head"><span class="entry-title">HackCBS 5.0</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">India's largest student-run hackathon · 4–6 Nov 2022</div></div>
 
-    <div class="entry reveal"><div class="entry-date">26 JUN 2025</div><div class="entry-head"><span class="entry-title">Network Engineer — Tata Consultancy Services</span><span class="pill p-now">current</span></div><div class="entry-sub">Enterprise network and security operations · BeyondTrust · BigPanda · Wireshark</div></div>
+    <div class="entry reveal"><div class="entry-date">OCT 2022</div><div class="entry-head"><span class="entry-title">Foundations of Project Management — Google</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · Google</div></div>
 
-    <div class="entry reveal"><div class="entry-date">29 DEC 2025</div><div class="entry-head"><span class="entry-title">CompTIA Security+ SY0-701</span><span class="pill p-cert">certification</span></div><div class="entry-sub">Industry-standard cybersecurity certification.</div></div>
+    <div class="entry reveal"><div class="entry-date">20 JUL 2022</div><div class="entry-head"><span class="entry-title">Innovate India Coding Championship — AICTE</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">Rank 1977 out of 200,000+ participants · Issued by AICTE</div><a class="entry-link" href="https://drive.google.com/drive/folders/1RTduujkPwHmYHSu6KO5tYT0UmpmwI7zw" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificates</a></div>
 
-    <div class="entry hot reveal"><div class="entry-date">17 MAR 2026</div><div class="entry-head"><span class="entry-title">Restarted YouTube — @codephile2.0</span><span class="pill p-start">start</span></div><div class="entry-sub">First video uploaded. Back at it.</div><a class="entry-link" href="https://youtube.com/@codephile2.0" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> @codephile2.0</a></div>
+    <div class="entry reveal"><div class="entry-date">AUG 2022</div><div class="entry-head"><span class="entry-title">Google Kick Start 2022 — Round E</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">Global competitive programming contest by Google · Rank 6399</div><a class="entry-link" href="https://drive.google.com/file/d/1SlmIQEAyfS9WhywN_q8xkw9c33dinCxT/view?usp=drive_link" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
 
-    <div class="entry hot reveal"><div class="entry-date">30 MAR 2026</div><div class="entry-head"><span class="entry-title">First Mobile App Security CTF — solved</span><span class="pill p-ctf">CTF</span></div><div class="entry-sub">Reverse engineered Android APK via Jadx · hooked runtime with Frida · exploited Insecure Data Storage (OWASP M2) · captured the flag.</div></div>
+    <div class="entry reveal"><div class="entry-date">MAR 2022</div><div class="entry-head"><span class="entry-title">Subject Matter Expert — Chegg India</span><span class="pill p-start">start</span></div><div class="entry-sub">Mentoring students across DSA, algorithms, and core CS subjects.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">FEB 2022</div><div class="entry-head"><span class="entry-title">Algorithmic Toolbox — UC San Diego</span><span class="pill p-cert">certificate</span></div><div class="entry-sub">Coursera · University of California San Diego</div></div>
+
+    <div class="entry reveal"><div class="entry-date">20 JAN 2022</div><div class="entry-head"><span class="entry-title">OOP Level 1 — SRM Online Programming Lab</span><span class="pill p-cert">certificate</span></div></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT – NOV 2021</div><div class="entry-head"><span class="entry-title">Google Cloud learning sprint — Qwiklabs</span><span class="pill p-learn">learning</span></div><div class="entry-sub">Cloud Engineering, Data Science & ML on Google Cloud · DevOps and Diwali Qwiklabs badges earned.</div><a class="entry-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> qwiklabs profile</a></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT 2021</div><div class="entry-head"><span class="entry-title">Hack Summit 2.0 — Aaruush '21</span><span class="pill p-hack">hackathon</span></div><div class="entry-sub">48-hour national-level hackathon · 8–10 Oct 2021</div></div>
+
+    <div class="entry reveal"><div class="entry-date">JUL 2021</div><div class="entry-head"><span class="entry-title">Early self-study push — C++, PHP, IBM Cybersecurity</span><span class="pill p-learn">learning</span></div><div class="entry-sub">IBM's 3-part Cybersecurity series + C++ and PHP on Udemy — early security interest years before it became a career focus.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">6 NOV 2020</div><div class="entry-head"><span class="entry-title">1st place — E-Quiz, CSE B.Tech 1st Year</span><span class="pill p-ach">achievement</span></div><div class="entry-sub">University-level quiz competition · SRM IST</div><a class="entry-link" href="https://drive.google.com/file/d/1MIHn_aWdGpK4aqO_qJo8VCc3uUUcFdXT" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> certificate</a></div>
+
+    <div class="entry reveal"><div class="entry-date">OCT 2020</div><div class="entry-head"><span class="entry-title">Started B.Tech CSE — SRM Institute</span><span class="pill p-start">start</span></div><div class="entry-sub">SRM Institute of Science and Technology, Chennai</div></div>
+
+    <div class="entry reveal"><div class="entry-date">JUN 2020</div><div class="entry-head"><span class="entry-title">Started YouTube — Codephile</span><span class="pill p-start">start</span></div><div class="entry-sub">Technical CS content. Grew to 5,800+ subscribers.</div></div>
+
+    <div class="entry reveal"><div class="entry-date">~ 2019 – 2020</div><div class="entry-head"><span class="entry-title">Shopadict — First Java project</span><span class="pill p-mile">origin</span></div><div class="entry-sub">Built a fully functional shopping app in Java during 12th grade as a self-chosen project for Informatics Practices.</div><a class="entry-link" href="https://github.com/DakshitChopra/Java-ShopAddict" target="_blank"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub</a></div>
+
 
   </div>
 
@@ -481,30 +551,31 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
 
   <div class="sub-label reveal">hackathons & participation</div>
   <div class="hack-grid">
-    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">Hack Summit 2.0 — Aaruush '21</div><div class="hack-date">OCT 2021 · 48hr national-level</div><a class="cred-link" href="https://drive.google.com/file/d/1vl9SNA7p8JXfcCAdO0ZEHgzMg4aG5Hoj/" target="_blank">certificate ↗</a></div>
-    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">HackCBS 5.0</div><div class="hack-date">NOV 2022 · India's largest student hackathon</div></div>
     <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">Yuva's Knack — CWD SRM UP</div><div class="hack-date">MAR 2023</div></div>
+    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">HackCBS 5.0</div><div class="hack-date">NOV 2022 · India's largest student hackathon</div><a class="cred-link" href="https://drive.google.com/file/d/1XTsHhruY7MubSit2lM1SGU-4zdGZAWN2" target="_blank">certificate ↗</a></div>
+    <div class="hack-card reveal"><div class="hack-label">hackathon</div><div class="hack-name">Hack Summit 2.0 — Aaruush '21</div><div class="hack-date">OCT 2021 · 48hr national-level</div><a class="cred-link" href="https://drive.google.com/file/d/1vl9SNA7p8JXfcCAdO0ZEHgzMg4aG5Hoj/" target="_blank">certificate ↗</a></div>
     <div class="hack-card reveal"><div class="hack-label">event</div><div class="hack-name">GDG DevFest India 2021</div><div class="hack-date">OCT 2021</div><a class="cred-link" href="https://drive.google.com/file/d/1pNzT8SsSFB3896O3V32klS5qHsjgaBVP/" target="_blank">certificate ↗</a></div>
     <div class="hack-card reveal"><div class="hack-label">event</div><div class="hack-name">Over-React — IEEE SRMIST SB</div><div class="hack-date">MAR 2021</div><a class="cred-link" href="https://drive.google.com/file/d/1MRsFFmx3iKsg6Co70_9YujaNuLItIbBc/" target="_blank">certificate ↗</a></div>
-  </div>
+    </div>
 
   <div class="sub-label reveal">courses & credentials</div>
   <div class="cred-grid">
-    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Intro to Cybersecurity Tools & Cyber Attacks</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/d8c10b3d-bb6f-4277-8bd4-8d7454416c2f" target="_blank">verify ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Roles, Processes & OS Security</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/4391228a-5cc1-493e-9820-cfc035d15024" target="_blank">verify ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Compliance Framework & Sys Admin</div><div class="cred-date">SEP 2021</div><a class="cred-link" href="https://www.credly.com/badges/74f632ee-ff4c-48b1-a93c-fe661ff0025b" target="_blank">verify ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">The Complete Introduction to C++ Programming</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-7c45f8f9-8873-42d9-8a1f-04a83c1f521c/" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">Learn PHP — For Beginners</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-5dee1b56-5524-4a1c-af6e-88e661dd6260/" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Qwiklabs</div><div class="cred-name">Cloud Engineering, Data Science & ML — Google Cloud</div><div class="cred-date">OCT 2021</div><a class="cred-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank">profile ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">UC San Diego</div><div class="cred-name">Algorithmic Toolbox</div><div class="cred-date">FEB 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/KTTDCKYAVTCV" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Google</div><div class="cred-name">Foundations of Project Management</div><div class="cred-date">OCT 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/BUPKMBJD5CCR" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">SRM Institute</div><div class="cred-name">OOP Level 1 — Online Programming Lab</div><div class="cred-date">JAN 2022</div><a class="cred-link" href="https://drive.google.com/file/d/1zD8sWJq3ainxrov9iBiZ2nswHZBN3CJN" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Imperial College London</div><div class="cred-name">Mathematics for Machine Learning Specialization</div><div class="cred-date">FEB 2023</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/specialization/RL5BNZ348ZF7" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">NPTEL · IIT</div><div class="cred-name">Introduction to Programming in C — Elite Rank · 84%</div><div class="cred-date">APR 2023</div><a class="cred-link" href="https://archive.nptel.ac.in/content/noc/NOC23/SEM1/Ecertificates/106/noc23-cs02/Course/NPTEL23CS02S3453007803038961.jpg" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Structured Approach to Problem Solving</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/PCH2KUFTUDNZ" target="_blank">certificate ↗</a></div>
-    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Data Storytelling</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/EK9YM7XW9YUG" target="_blank">certificate ↗</a></div>
+        <div class="cred-card reveal"><div class="cred-issuer">IDMC · CLAIRE</div><div class="cred-name">AI Foundation Certification</div><div class="cred-date">NOV 2025</div><a class="cred-link" href="https://drive.google.com/file/d/1WpiJlhpOmScv_4UmsJmPDMJ3e69KV7gE" target="_blank">certificate ↗</a></div>
     <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Human Decision Making and its Biases</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/35CFE8UBWVNF" target="_blank">certificate ↗</a></div>
-  </div>
+    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Data Storytelling</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/EK9YM7XW9YUG" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Fractal Analytics</div><div class="cred-name">Structured Approach to Problem Solving</div><div class="cred-date">FEB 2024</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/records/PCH2KUFTUDNZ" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">NPTEL · IIT</div><div class="cred-name">Introduction to Programming in C — Elite Rank · 84%</div><div class="cred-date">APR 2023</div><a class="cred-link" href="https://archive.nptel.ac.in/content/noc/NOC23/SEM1/Ecertificates/106/noc23-cs02/Course/NPTEL23CS02S3453007803038961.jpg" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Imperial College London</div><div class="cred-name">Mathematics for Machine Learning Specialization</div><div class="cred-date">FEB 2023</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/specialization/RL5BNZ348ZF7" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Google</div><div class="cred-name">Foundations of Project Management</div><div class="cred-date">OCT 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/BUPKMBJD5CCR" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">UC San Diego</div><div class="cred-name">Algorithmic Toolbox</div><div class="cred-date">FEB 2022</div><a class="cred-link" href="https://www.coursera.org/account/accomplishments/certificate/KTTDCKYAVTCV" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">SRM Institute</div><div class="cred-name">OOP Level 1 — Online Programming Lab</div><div class="cred-date">JAN 2022</div><a class="cred-link" href="https://drive.google.com/file/d/1zD8sWJq3ainxrov9iBiZ2nswHZBN3CJN" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Qwiklabs</div><div class="cred-name">Cloud Engineering, Data Science & ML — Google Cloud</div><div class="cred-date">OCT 2021</div><a class="cred-link" href="https://www.qwiklabs.com/public_profiles/82be778b-e749-4bcf-970a-cd3f19b4992f" target="_blank">profile ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Compliance Framework & Sys Admin</div><div class="cred-date">SEP 2021</div><a class="cred-link" href="https://www.credly.com/badges/74f632ee-ff4c-48b1-a93c-fe661ff0025b" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Cybersecurity Roles, Processes & OS Security</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/4391228a-5cc1-493e-9820-cfc035d15024" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">IBM</div><div class="cred-name">Intro to Cybersecurity Tools & Cyber Attacks</div><div class="cred-date">AUG 2021</div><a class="cred-link" href="https://www.credly.com/badges/d8c10b3d-bb6f-4277-8bd4-8d7454416c2f" target="_blank">verify ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">Learn PHP — For Beginners</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-5dee1b56-5524-4a1c-af6e-88e661dd6260/" target="_blank">certificate ↗</a></div>
+    <div class="cred-card reveal"><div class="cred-issuer">Udemy</div><div class="cred-name">The Complete Introduction to C++ Programming</div><div class="cred-date">JUL 2021</div><a class="cred-link" href="https://www.udemy.com/certificate/UC-7c45f8f9-8873-42d9-8a1f-04a83c1f521c/" target="_blank">certificate ↗</a></div>
+    </div>
 
   <div class="divider reveal"></div>
 
@@ -521,6 +592,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
       verify on credly
     </a>
   </div>
+
 
   <div id="contact" class="sec-header reveal"><span class="sec-num">04</span><span class="sec-label">Contact</span></div>
   <div class="contact-grid reveal">
