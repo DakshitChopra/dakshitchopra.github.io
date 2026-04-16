@@ -605,16 +605,66 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
         <div class="contact-link"><span class="contact-link-label">Email</span><span class="contact-link-val">dakshitchopra@gmail.com</span></div>
       </div>
     </div>
-  <form class="contact-form" id="contact-form">
+   <form class="contact-form" id="contact-form">
   <input type="text" id="cf-subject" placeholder="Subject" required />
   <textarea id="cf-body" placeholder="Message" rows="5" required></textarea>
-  <input type="hidden" name="access_key" id="w3f-key" />
-  <input type="hidden" name="subject" id="hidden-subject" />
-  <input type="hidden" name="message" id="hidden-message" />
+  
+  <!-- Hidden Web3Forms fields -->
+  <input type="hidden" name="access_key" value="cb67d316-0600-4569-9fd7-7f2c0437caac" />
+  <input type="subject" name="subject" id="hidden-subject" />
+  <input type="message" name="message" id="hidden-message" />
   <input type="checkbox" name="botcheck" style="display:none" />
+
   <button type="submit">Send Message ↗</button>
   <div id="cf-note" style="display:none; font-size:11px; color:var(--accent); margin-top:8px; letter-spacing:0.5px;"></div>
 </form>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const subject = document.getElementById('cf-subject').value;
+    const body = document.getElementById('cf-body').value;
+    const note = document.getElementById('cf-note');
+    const btn = this.querySelector('button[type="submit"]');
+
+    // Sync hidden fields
+    document.getElementById('hidden-subject').value = subject;
+    document.getElementById('hidden-message').value = body;
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const formData = new FormData(this);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      note.style.display = 'block';
+
+      if (data.success) {
+        note.textContent = 'Message sent successfully!';
+        this.reset();
+        btn.textContent = 'Send Message ↗';
+        btn.disabled = false;
+      } else {
+        note.textContent = 'Something went wrong. Please try again.';
+        btn.textContent = 'Send Message ↗';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      note.style.display = 'block';
+      note.textContent = 'Network error. Please try again.';
+      btn.textContent = 'Send Message ↗';
+      btn.disabled = false;
+    }
+  });
+</script>
 
   <footer class="reveal">
     <div class="footer-left"><span>dakshit chopra</span> · built with intent</div>
@@ -624,51 +674,9 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
 </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       setTimeout(() => entry.target.classList.add('visible'), 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
-<script src="config.js"></script>
-<script>
-  document.getElementById('w3f-key').value = window.W3F_KEY || '';
-  document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const subject = document.getElementById('cf-subject').value;
-    const body = document.getElementById('cf-body').value;
-    const note = document.getElementById('cf-note');
-    const btn = this.querySelector('button[type="submit"]');
-    document.getElementById('hidden-subject').value = subject;
-    document.getElementById('hidden-message').value = body;
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST', body: new FormData(this)
-      });
-      const data = await res.json();
-      note.style.display = 'block';
-      if (data.success) {
-        note.textContent = 'Message sent successfully!';
-        this.reset();
-      } else {
-        note.textContent = 'Something went wrong. Please try again.';
-      }
-    } catch {
-      note.style.display = 'block';
-      note.textContent = 'Network error. Please try again.';
-    }
-    btn.textContent = 'Send Message ↗';
-    btn.disabled = false;
-  });
-</script>
-</body>
-</html>
+      observer.unobserv
