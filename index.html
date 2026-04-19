@@ -648,18 +648,18 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; display: fle
       note.style.display = 'block';
 
       if (data.success) {
-        note.textContent = 'Message sent successfully!';
+        note.textContent = 'Message sent successfully! :D';
         this.reset();
         btn.textContent = 'Send Message ↗';
         btn.disabled = false;
       } else {
-        note.textContent = 'Something went wrong. Please try again.';
+        note.textContent = 'Something went wrong. Please try again :)';
         btn.textContent = 'Send Message ↗';
         btn.disabled = false;
       }
     } catch (err) {
       note.style.display = 'block';
-      note.textContent = 'Network error. Please try again.';
+      note.textContent = 'Network error. Please try again. ';
       btn.textContent = 'Send Message ↗';
       btn.disabled = false;
     }
